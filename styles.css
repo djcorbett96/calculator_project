@@ -73,3 +73,11 @@ button[value = '0'] {
     background-color: rgb(4, 85, 78);
     color: white;
 }
+
+#decimal:disabled {
+    background-color: rgb(49, 61, 60);
+}
+
+button:enabled {
+    cursor: pointer;
+}

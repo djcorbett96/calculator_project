@@ -11,6 +11,10 @@ let multiply = function(num1, num2) {
 let divide = function(num1, num2) {
     return num1 / num2;
 }
+let rounded = function(num) {
+    return Math.round(num * 1000) / 1000
+}
+
 
 //constants
 const numButtons = document.querySelectorAll('.num');
@@ -23,7 +27,7 @@ const negButton = document.querySelector('#negative');
 
 // variables
 let currentOperand;
-let currentBtnValue;
+let currentBtnValue = 0;
 let previousBtnValue;
 let displayScreenNum = document.querySelector('#currentNum');
 let displayScreenOp = document.querySelector('#currentOp');
@@ -31,16 +35,16 @@ let displayScreenOp = document.querySelector('#currentOp');
 // Calculate function to run when equals is pressed after a num, an operator, and another num
 const calculate = function(operator, num1, num2) {
     if(operator === '+') {
-        return add(num1, num2);
+        return rounded(add(num1, num2));
     }
     else if(operator === '-') {
-        return subtract(num1, num2);
+        return rounded(subtract(num1, num2));
     }
     else if(operator === '*') {
-       return multiply(num1, num2);
+       return rounded(multiply(num1, num2));
     }
     else if(operator === '/') {
-        return divide(num1, num2);
+        return rounded(divide(num1, num2));
     }
 }
 
@@ -48,10 +52,10 @@ const calculate = function(operator, num1, num2) {
 numButtons.forEach(item => {
     item.addEventListener('click', event => {
         if(currentBtnValue === undefined) {
-            currentBtnValue = parseInt(event.target.value);
+            currentBtnValue = parseFloat(event.target.value);
         }
         else if(currentBtnValue !== undefined) {
-            currentBtnValue = parseInt(currentBtnValue + event.target.value);
+            currentBtnValue = parseFloat(currentBtnValue + event.target.value);
         }
         displayScreenNum.innerText = currentBtnValue;
         opButtons.forEach(item => {
@@ -68,9 +72,10 @@ opButtons.forEach(item => {
         event.target.classList.add('operand-selected');
         if(currentOperand === undefined) {
             previousBtnValue = currentBtnValue;
-            currentBtnValue = undefined;
+            currentBtnValue = 0;
         }
         currentOperand = event.target.value;
+        decimalButton.disabled = false;
     })
 })
 
@@ -79,18 +84,27 @@ equalButton.addEventListener('click', ()=> {
     currentBtnValue = answer;
     displayScreenNum.innerText = currentBtnValue;
     currentOperand = undefined;
+    decimalButton.disabled = false;
     opButtons.forEach(item => {
         item.classList.remove('operand-selected');
     });
 })
 
 resetButton.addEventListener('click', ()=> {
-    currentBtnValue = undefined;
-    previousBtnValue = undefined;
+    currentBtnValue = 0;
+    previousBtnValue = 0;
     displayScreenNum.innerText = 0;
+    decimalButton.disabled = false;
     opButtons.forEach(item => {
         item.classList.remove('operand-selected');
     });
 })
 
-
+decimalButton.addEventListener('click', () => {
+    currentBtnValue = currentBtnValue + decimalButton.value;
+    displayScreenNum.innerText = currentBtnValue;
+    decimalButton.disabled = true;
+    opButtons.forEach(item => {
+        item.classList.remove('operand-selected');
+    });
+})

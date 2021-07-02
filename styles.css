@@ -1,15 +1,20 @@
 .calculator {
-    width: 500px;
+    width: 370px;
     margin: auto;
-    background-color: darkslategray;
+    background-color: rgb(37, 37, 37);
+    border-radius: 8px;
 }
 
 .display {
     height: 100px;
-    background-color: grey;
+    background-color: rgb(37, 37, 37);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin: 0;
+    padding-top: 8px;
 }
 
 .inputContainer {
@@ -17,17 +22,54 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 button {
-    height: 70px;
-    width: 70px;
-    margin: 8px;
+    height: 80px;
+    width: 80px;
+    margin: 1px;
+    border-radius: 8px;
+    font-size: larger;
+}
+
+button[value = '0'] {
+    width: 160px;
 }
 
 .screen {
-    background-color: white;
+    background-color: rgb(231, 231, 231);
     height: 75%;
-    width: 83%;
+    width: 330px;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#reset, #negative, #percent {
+    background-color: rgb(67, 164, 255);
+}
+
+.operand, #equals {
+    background-color: rgb(255, 188, 62);
+}
+
+.operand-selected {
+    background-color: rgb(255, 215, 140);
+}
+
+#currentNum {
+    margin: 0;
+    font-size: 50px;
+    font-weight: 600;
+    font-family: cursive;
+    margin-bottom: 0;
+    padding-right: 10px;
+}
+
+.num, #decimal {
+    background-color: rgb(4, 85, 78);
+    color: white;
 }

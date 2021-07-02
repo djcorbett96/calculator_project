@@ -10,24 +10,28 @@
 <body>
     <section class="calculator">
         <section class="display">
-            <div class="screen"></div>
+            <div class="screen">
+                <p id="currentOp"></p>
+                <p id="currentNum"></p>
+            </div>
         </section>
         <section class="inputContainer">
-                <button>0</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>+</button>
-                <button>-</button>
-                <button>/</button>
-                <button>*</button>
-                <button>=</button>
+                <button class="num" value="0">0</button>
+                <button class="num" value="1">1</button>
+                <button class="num" value="2">2</button>
+                <button class="num" value="3">3</button>
+                <button class="num" value="4">4</button>
+                <button class="num" value="5">5</button>
+                <button class="num" value="6">6</button>
+                <button class="num" value="7">7</button>
+                <button class="num" value="8">8</button>
+                <button class="num" value="9">9</button>
+                <button class="operand" value="+">+</button>
+                <button class="operand" value="-">-</button>
+                <button class="operand" value="/">/</button>
+                <button class="operand" value="*">*</button>
+                <button id="equals" value="=">=</button>
+                <button id="reset" value="AC">AC</button>
         </section>
     </section>
 
